@@ -33,7 +33,7 @@ use strict;
 use HTTP::Request::Common qw(POST);
 use LWP::UserAgent;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new {
 	my $class = shift;
@@ -103,7 +103,7 @@ sub toXML {
            "-//Mozilla Corporation//Litmus Result Submission DTD//EN/"
            "http://litmus.mozilla.org/litmus_results.dtd">'."\n";
     $x .= '<litmusresults action="'.$self->{'action'}.'" useragent="'.
-    	'Test::Litmus/'.$VERSION.' ('.$self->{'machinename'}.')"'.
+    	'Test::Litmus/'.$VERSION.' ('.$self->{'machinename'}.')" '.
     	'machinename="'.$self->{'machinename'}.'">'."\n";
     $x .= '  <testresults username="'.$self->{'username'}.'"'."\n";
     $x .= '     authtoken="'.$self->{'authtoken'}.'"'."\n";

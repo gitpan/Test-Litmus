@@ -51,7 +51,7 @@ sub new {
 	$self->{'logs'} = $args{'-log'};
 	
 	$self->{'automated'} = defined $args{'-isAutomatedResult'} ? 
-		$args{'-isAutomatedResult'} : 0
+		$args{'-isAutomatedResult'} : 0;
 	
 	return $self;
 }
