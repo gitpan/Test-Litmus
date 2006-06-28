@@ -33,7 +33,7 @@ use strict;
 use HTTP::Request::Common qw(POST);
 use LWP::UserAgent;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub new {
 	my $class = shift;
@@ -119,9 +119,11 @@ sub toXML {
     	$x .= ">\n";
     }
     
-    my @logs = @{$self->{'logs'}};
-    foreach my $curlog (@logs) {
-    	$x .= $curlog->toXML();
+    if ($self->{'logs'}) {
+		my @logs = @{$self->{'logs'}};
+		foreach my $curlog (@logs) {
+			$x .= $curlog->toXML();
+		}
     }
     
     my @results = @{$self->{'results'}}; 

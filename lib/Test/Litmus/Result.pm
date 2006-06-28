@@ -51,7 +51,7 @@ sub new {
 	$self->{'logs'} = $args{'-log'};
 	
 	$self->{'automated'} = defined $args{'-isAutomatedResult'} ? 
-		$args{'-isAutomatedResult'} : 0;
+		$args{'-isAutomatedResult'} : 1;
 	
 	return $self;
 }
@@ -92,9 +92,11 @@ sub toXML {
 		$x .= '  <bugnumber>'.$self->{'bugnumber'}.'</bugnumber>'."\n";
 	}
 	
-	my @logs = @{$self->{'logs'}};
-    foreach my $curlog (@logs) {
-    	$x .= $curlog->toXML();
+	if ($self->{'logs'}) {
+		my @logs = @{$self->{'logs'}};
+		foreach my $curlog (@logs) {
+			$x .= $curlog->toXML();
+		}
     }
 	
 	$x .= '</result>'."\n";
